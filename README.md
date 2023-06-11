@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kwRG0dsqJAHxsOXF9zFeyNxpuh_TWSGg?usp=sharing]
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kwRG0dsqJAHxsOXF9zFeyNxpuh_TWSGg?usp=sharing)
 
 # GRN-VAE
 
