@@ -1,5 +1,3 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kwRG0dsqJAHxsOXF9zFeyNxpuh_TWSGg?usp=sharing)
-
 # GRN-VAE
 
 This repository include code and documentation for our manuscript "Improving Gene Regulatory Network Inference using Dropout Augmentation". 
@@ -20,6 +18,8 @@ The core function `runGRNVAE` requires the following two things to get started:
 - **Experiment Configs**. We also provide two sets of default configs with this package, namely `DEFAULT_GRNVAE_CONFIGS` and `DEFAULT_DEEPSEM_CONFIGS`. They are just two python dictionaries. If you need to make modifications, just save them to a variable and adjust the values. 
 
 ## Quick Example
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kwRG0dsqJAHxsOXF9zFeyNxpuh_TWSGg?usp=sharing)
 
 ```
 import grnvae
