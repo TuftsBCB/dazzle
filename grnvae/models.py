@@ -19,6 +19,49 @@ class MLP(nn.Module):
         return self.l3(out2)
 
 class GRNVAE(nn.Module):
+    ''' A GRN-VAE model
+    
+    Parameters
+    ----------
+    n_genes: int
+        Number of Genes
+    hidden_dim: int
+        Size of dimension in the MLP layers
+    z_dim: int
+        Size of dimension of Z
+    A_dim: int
+        Number of Adjacency matrix to be modeled at the same time
+    activation: function
+        A pytorch activation layer
+    train_on_non_zero: bool
+        Whether to train on non-zero data only
+    dropout_augmentation_p: double
+        Probability of augmented dropout. For example, 0.1 means that
+        10% of data will be temporarily assign to zero in each forward 
+        pass
+    dropout_augmentation_type: str
+        Choose among 'all' (default), 'belowmean', 'belowhalfmean'. This 
+        option specifies where dropout augmentation would happen. If
+        'belowmean' is selected, the augmentation would only happen on
+        values below global mean. 
+    pretrained_A: torch.tensor
+        A customized initialization of A instead of random initialization. 
+        
+    Methods
+    -------
+    get_adj_
+        Obtain current adjacency matrix 
+    get_adj
+        Obtain current adjacency matrix as a detached numpy array
+    I_minus_A
+        Calculate I - A
+    reparameterization(z_mu, z_sigma)
+        Reparameterization trick used in VAE
+    dropout_augmentation(x, global_mean)
+        Randomly add dropout noise to the original expression data
+    forward(x, global_mean, global_std, use_dropout_augmentation)
+        Forward pass
+    '''
     def __init__(
         self, n_gene, hidden_dim=128, z_dim=1, A_dim=1, 
         activation=nn.Tanh, train_on_non_zero=False, 

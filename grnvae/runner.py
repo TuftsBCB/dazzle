@@ -116,12 +116,14 @@ def runGRNVAE(exp_array, configs,
     logger: LightLogger or None
         Either a predefined logger or None to start a new one. This 
         logger contains metric information logged during training. 
+    progress_bar: bool
+        Whether to display a progress bar on epochs. 
         
     Returns
     -------
-    torch.Module
-        A GRNVAE module object. You can export the adjacency matrix
-        using its get_adj() method. 
+    (torch.Module, List)
+        This function returns a tuple of the trained model and a list of 
+        adjacency matrix at all evaluation points. 
     '''
     if configs['early_stopping'] != 0 and configs['train_split'] == 1.0:
         raise Exception(

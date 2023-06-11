@@ -9,10 +9,10 @@ beeline_generated.zip
 __pycache__/
 .ipynb_checkpoints
 data_viz_latest/
-bash_scripts.ipynb
-hammond_export_net.ipynb
-final_report.ipynb
-netrexcf.ipynb
-gene_feature_exp.ipynb
-hammond_viz_old.ipynb
+notebooks/bash_scripts.ipynb
+notebooks/hammond_export_net.ipynb
+notebooks/final_report.ipynb
+notebooks/netrexcf.ipynb
+notebooks/gene_feature_exp.ipynb
+notebooks/hammond_viz_old.ipynb
 
