@@ -38,7 +38,7 @@ def load_beeline_ground_truth(data_dir, gene_names):
     
     return eval_flat_mask, y_true, truth_edges
 
-def load_beeline(data_dir, benchmark_data='hESC', 
+def load_beeline(data_dir='data', benchmark_data='hESC', 
                  benchmark_setting='500_STRING'):
     ''' Load BEELINE
     

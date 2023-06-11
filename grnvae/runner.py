@@ -3,10 +3,10 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import TensorDataset
-from models import GRNVAE
-from evaluate import get_metrics
+from .models import GRNVAE
+from .evaluate import get_metrics
 from tqdm import tqdm
-from logger import LightLogger
+from .logger import LightLogger
 
 DEFAULT_DEEPSEM_CONFIGS = {
     # Train/Test split
@@ -88,7 +88,7 @@ def one_hot(x):
     return one_hot_matrix, x_unique
 
 def runGRNVAE(exp_array, configs, 
-              ground_truth=None, logger=None, progress_bar=False):
+              ground_truth=None, logger=None, progress_bar=True):
     '''
     Initialize and Train a GRNVAE model with configs
     
@@ -125,6 +125,11 @@ def runGRNVAE(exp_array, configs,
         This function returns a tuple of the trained model and a list of 
         adjacency matrix at all evaluation points. 
     '''
+    if configs['cuda']:
+        if not torch.cuda.is_available():
+            print('Cuda is not available for torch. Proceed on CPU instead.')
+            configs['cuda'] = False
+    
     if configs['early_stopping'] != 0 and configs['train_split'] == 1.0:
         raise Exception(
             "You indicate early stopping but you have not specified any ", 
