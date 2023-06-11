@@ -13,7 +13,7 @@ maintainers = [
 ]
 license = {file = "LICENSE"}
 description = "Improving GRN Inference using Dropout Augmentation"
-version = "0.0.2"
+version = "0.0.3"
 requires-python = ">=3.7"
 classifiers = ["License :: OSI Approved :: MIT License"]
 readme = "README.md"
@@ -28,4 +28,4 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://github.com/haozhu233/grnkit"
+Home = "https://bcb.cs.tufts.edu/GRN-VAE/"
