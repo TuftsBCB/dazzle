@@ -4,6 +4,6 @@ from .evaluate import get_metrics, extract_edges
 
 from .logger import LightLogger, load_logger
 
-from .models import GRNVAE
+from .models import DAZZLE
 
-from .runner import DEFAULT_DEEPSEM_CONFIGS, DEFAULT_GRNVAE_CONFIGS, runGRNVAE
+from .runner import DEFAULT_DEEPSEM_CONFIGS, DEFAULT_DAZZLE_CONFIGS, runDAZZLE, runDAZZLE_ensemble

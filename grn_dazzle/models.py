@@ -18,8 +18,8 @@ class MLP(nn.Module):
         out2 = self.act(self.l2(out1)) 
         return self.l3(out2)
 
-class GRNVAE(nn.Module):
-    ''' A GRN-VAE model
+class DAZZLE(nn.Module):
+    ''' A DAZZLE model
     
     Parameters
     ----------
@@ -68,7 +68,7 @@ class GRNVAE(nn.Module):
         dropout_augmentation_p=0.1, dropout_augmentation_type='all',
         pretrained_A=None, 
     ):
-        super(GRNVAE, self).__init__()
+        super(DAZZLE, self).__init__()
         self.n_gene = n_gene
         self.hidden_dim = hidden_dim
         self.z_dim = z_dim

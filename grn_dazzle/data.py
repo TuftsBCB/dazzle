@@ -80,7 +80,7 @@ def download_beeline(save_dir, remove_zip=True):
     if not os.path.exists(save_dir):
         raise Exception("save_dir does not exist")
     zip_path = os.path.join(save_dir, 'BEELINE.zip')
-    download_file('https://bcb.cs.tufts.edu/GRN-VAE/BEELINE.zip', 
+    download_file('https://bcb.cs.tufts.edu/DAZZLE/BEELINE.zip', 
                   zip_path)
     with zipfile.ZipFile(zip_path,"r") as zip_ref:
         for file in tqdm(desc='Extracting', iterable=zip_ref.namelist(), 

@@ -3,7 +3,7 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import TensorDataset
-from .models import GRNVAE
+from .models import DAZZLE
 from .evaluate import get_metrics
 from tqdm import tqdm
 from .logger import LightLogger
@@ -42,7 +42,7 @@ DEFAULT_DEEPSEM_CONFIGS = {
     'K2': 2
 }
 
-DEFAULT_GRNVAE_CONFIGS = {
+DEFAULT_DAZZLE_CONFIGS = {
     # Train/Test split
     'train_split': 1.0,
     'train_split_seed': None, 
@@ -87,10 +87,10 @@ def one_hot(x):
         one_hot_matrix[i, label_dict[label]] = 1.0
     return one_hot_matrix, x_unique
 
-def runGRNVAE(exp_array, configs, 
+def runDAZZLE(exp_array, configs, 
               ground_truth=None, logger=None, progress_bar=True):
     '''
-    Initialize and Train a GRNVAE model with configs
+    Initialize and Train a DAZZLE model with configs
     
     Parameters
     ----------
@@ -105,7 +105,7 @@ def runGRNVAE(exp_array, configs,
         `eval_on_n_steps`, `lr_nn`, `lr_adj`, `K1`, and `K2`. 
     ground_truth: tuple or None
         (Optional, only for BEELINE evaluation) You don't need 
-        to define this parameter when you execute GRNVAE on real 
+        to define this parameter when you execute DAZZLE on real 
         datasets when the ground truth network is unknown. For 
         evaluations on BEELINE, 
         BEELINE ground truth object exported by 
@@ -176,7 +176,7 @@ def runGRNVAE(exp_array, configs,
             val_dt, batch_size=configs['batch_size'], shuffle=True)
 
     # Defining Model -----------------------------------------------------------
-    vae = GRNVAE(
+    vae = DAZZLE(
         n_gene = n_gene, 
         hidden_dim=configs['hidden_dim'], z_dim=configs['z_dim'], 
         A_dim = configs['A_dim'],
@@ -332,12 +332,12 @@ def runGRNVAE(exp_array, configs,
     vae.classifier_pos_weight = vae.classifier_pos_weight.cpu()
     return vae, adjs
 
-def runGRNVAE_ensemble(exp_array, configs,
+def runDAZZLE_ensemble(exp_array, configs,
                        ground_truth=None, logger=None, rep_times=10):
     trained_models = []
     final_adjs = []
     for _ in tqdm(range(rep_times)):
-        vae, adjs = runGRNVAE(exp_array, configs, ground_truth, logger)
+        vae, adjs = runDAZZLE(exp_array, configs, ground_truth, logger)
         trained_models.append(vae)
         final_adjs.append(vae.get_adj())
     ensembled_adj = sum(final_adjs)
