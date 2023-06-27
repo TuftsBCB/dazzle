@@ -4,7 +4,7 @@ This repository include code and documentation for our manuscript "Improving Gen
 
 ## Install
 
-This package is available on pip
+This package is available on pip 
 
 ```
 pip install grn-dazzle
@@ -22,7 +22,7 @@ The core function `runDAZZLE` requires the following two things to get started:
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kwRG0dsqJAHxsOXF9zFeyNxpuh_TWSGg?usp=sharing)
 
 ```
-from grn-dazzle import load_beeline, runDAZZLE, get_metrics, DEFAULT_DAZZLE_CONFIGS
+from dazzle import load_beeline, runDAZZLE, get_metrics, DEFAULT_DAZZLE_CONFIGS
 
 
 bl_data, bl_ground_truth = load_beeline(
