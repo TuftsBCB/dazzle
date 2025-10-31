@@ -2,6 +2,8 @@
 
 This repository include code and documentation for our manuscript "Improving Gene Regulatory Network Inference using Dropout Augmentation". 
 
+Checkout RegDiffusion, our latest work on gene regulatory network inference: https://github.com/TuftsBCB/RegDiffusion
+
 ## Install
 
 This package is available on pip 
